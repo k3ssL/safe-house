@@ -8,7 +8,7 @@ import watch from '../../assets/images/watch.webp'
 import asics from '../../assets/images/asics.webp'
 import switer from '../../assets/images/switer.webp'
 import glasses from '../../assets/images/glasses.jpg'
-import collection from '../../assets/images/collection.webp'
+import collection from '../../assets/images/collection.jpg'
 
 const products = [
     {

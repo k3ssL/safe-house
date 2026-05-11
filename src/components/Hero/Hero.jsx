@@ -1,7 +1,7 @@
 import { useInView } from 'react-intersection-observer';
 import styles from './Hero.module.css';
 import {Link} from "react-router-dom";
-import hero from '../../assets/images/hero.jpg'
+import hero from '../../assets/images/hero.png'
 
 const Hero = () => {
     const { ref, inView } = useInView({
@@ -62,10 +62,10 @@ const Hero = () => {
                             className={styles.hero_image}
                         />
                         <div className={styles.floating_card} style={{ top: '10%', right: '30%' }}>
-                            <div className={styles.floating_text}>Новая коллекция</div>
+                            <div className={styles.floating_text}>Улучшенная безопасноть</div>
                         </div>
                         <div className={styles.floating_card} style={{ bottom: '15%', left: '25%' }}>
-                            <div className={styles.floating_text}>Бесплатная доставка</div>
+                            <div className={styles.floating_text}>Установка под "ключ"</div>
                         </div>
                     </div>
                 </div>
