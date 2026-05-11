@@ -2,198 +2,226 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import styles from './Catalog.module.css';
-import whiteShirt from '../../assets/images/white_shirt.jpeg'
-import sumka from '../../assets/images/sumka.webp'
-import watch from '../../assets/images/watch.webp'
-import asics from '../../assets/images/asics.webp'
-import switer from '../../assets/images/switer.webp'
-import jeans from '../../assets/images/jeans.webp'
-import airpods from '../../assets/images/airpods.webp'
-import remen from '../../assets/images/remen.webp'
-import palto from '../../assets/images/palto.webp'
-import bag from '../../assets/images/bag.jpg'
-import glasses from '../../assets/images/glasses.jpg'
-import plate from '../../assets/images/plate.jpg'
+import domofon from '../../assets/images/domofon.png';
+import camera from '../../assets/images/camera.webp';
+import signalization from '../../assets/images/signalization.jpg';
+import accessControl from '../../assets/images/accessControl.webp';
+import fireSystem from '../../assets/images/fireSystem.jpg';
+import sensor from '../../assets/images/sensor.webp';
+import videorecorder from '../../assets/images/videodecoder.webp';
+import monitor from '../../assets/images/monitor.png';
+import powerSupply from '../../assets/images/powerSupply.webp';
+import cable from '../../assets/images/cable.jpg';
+import smartLock from '../../assets/images/smartLock.jpg';
+import intercom from '../../assets/images/intercom.jpg';
 
-// Данные товаров для каталога
+// Данные товаров для каталога охранных систем
 const allProducts = [
     {
         id: 1,
-        name: 'Минималистичная футболка',
-        category: 'Одежда',
-        subcategory: 'Футболки',
-        price: 2990,
-        oldPrice: 4990,
-        image: whiteShirt,
+        name: 'IP-видеодомофон Hikvision',
+        category: 'Домофоны',
+        subcategory: 'IP-домофоны',
+        price: 15990,
+        oldPrice: 22990,
+        image: domofon,
         rating: 4.8,
         reviews: 124,
         isNew: true,
         inStock: true,
-        colors: ['Черный', 'Белый', 'Серый'],
-        sizes: ['XS', 'S', 'M', 'L', 'XL']
+        brand: 'Hikvision',
+        type: 'Проводной',
+        features: ['Wi-Fi', 'Сенсорный экран', 'Ночное видение'],
+        warranty: 3
     },
     {
         id: 2,
-        name: 'Кожаная сумка',
-        category: 'Аксессуары',
-        subcategory: 'Сумки',
-        price: 12990,
-        image: sumka,
+        name: 'IP-камера видеонаблюдения',
+        category: 'Камеры',
+        subcategory: 'IP-камеры',
+        price: 8990,
+        image: camera,
         rating: 4.9,
         reviews: 87,
         isNew: true,
         inStock: true,
-        colors: ['Черный', 'Коричневый'],
-        sizes: ['One size']
+        brand: 'Dahua',
+        type: 'Уличная',
+        features: ['Full HD', 'ИК-подсветка', 'IP67'],
+        warranty: 3
     },
     {
         id: 3,
-        name: 'Смарт-часы',
-        category: 'Электроника',
-        subcategory: 'Гаджеты',
+        name: 'Комплект сигнализации Ajax',
+        category: 'Сигнализации',
+        subcategory: 'Беспроводные',
         price: 24990,
         oldPrice: 29990,
-        image: watch,
+        image: signalization,
         rating: 4.7,
         reviews: 203,
         discount: 17,
         inStock: true,
-        colors: ['Черный', 'Серебристый'],
-        sizes: ['One size']
+        brand: 'Ajax',
+        type: 'Беспроводная',
+        features: ['Мобильное приложение', 'Датчики движения', 'Сирена'],
+        warranty: 3
     },
     {
         id: 4,
-        name: 'Дизайнерские кроссовки',
-        category: 'Обувь',
-        subcategory: 'Кроссовки',
-        price: 8990,
-        image: asics,
+        name: 'СКУД контроллер ZKTeco',
+        category: 'Контроль доступа',
+        subcategory: 'Контроллеры',
+        price: 34990,
+        image: accessControl,
         rating: 4.8,
         reviews: 156,
         isNew: true,
         inStock: true,
-        colors: ['Белый', 'Черный', 'Красный'],
-        sizes: ['36', '37', '38', '39', '40', '41', '42']
+        brand: 'ZKTeco',
+        type: 'Биометрический',
+        features: ['Отпечатки пальцев', 'RFID-карты', 'ПО в комплекте'],
+        warranty: 3
     },
     {
         id: 5,
-        name: 'Шерстяной свитер',
-        category: 'Одежда',
-        subcategory: 'Свитеры',
-        price: 5990,
-        oldPrice: 8990,
-        image: switer,
+        name: 'Пожарная сигнализация Болид',
+        category: 'Пожарная безопасность',
+        subcategory: 'Пожарные системы',
+        price: 59990,
+        oldPrice: 89990,
+        image: fireSystem,
         rating: 4.6,
         reviews: 92,
         discount: 33,
         inStock: true,
-        colors: ['Бежевый', 'Серый', 'Синий'],
-        sizes: ['S', 'M', 'L', 'XL']
+        brand: 'Болид',
+        type: 'Адресная',
+        features: ['Датчики дыма', 'Оповещатели', 'Пульт управления'],
+        warranty: 3
     },
     {
         id: 6,
-        name: 'Солнцезащитные очки',
-        category: 'Аксессуары',
-        subcategory: 'Очки',
-        price: 3990,
-        image: glasses,
+        name: 'Датчик движения Bosch',
+        category: 'Датчики',
+        subcategory: 'Датчики движения',
+        price: 2490,
+        image: sensor,
         rating: 4.5,
         reviews: 67,
         isNew: true,
         inStock: true,
-        colors: ['Черный', 'Золотой', 'Серебристый'],
-        sizes: ['One size']
+        brand: 'Bosch',
+        type: 'Инфракрасный',
+        features: ['Угол 180°', 'Дальность 15м', 'Иммунитет к животным'],
+        warranty: 3
     },
     {
         id: 7,
-        name: 'Джинсы Slim Fit',
-        category: 'Одежда',
-        subcategory: 'Джинсы',
-        price: 4990,
-        image: jeans,
+        name: 'Видеорегистратор 16 каналов',
+        category: 'Видеонаблюдение',
+        subcategory: 'Видеорегистраторы',
+        price: 42990,
+        image: videorecorder,
         rating: 4.7,
         reviews: 178,
         inStock: true,
-        colors: ['Синий', 'Черный', 'Серый'],
-        sizes: ['28', '29', '30', '31', '32', '33', '34']
+        brand: 'Hikvision',
+        type: 'Сетевой',
+        features: ['16 каналов', '4K запись', 'Жесткий диск 4TB'],
+        warranty: 3
     },
     {
         id: 8,
-        name: 'Беспроводные наушники',
-        category: 'Электроника',
-        subcategory: 'Аудио',
-        price: 12990,
-        image: airpods,
+        name: 'Монитор видеонаблюдения',
+        category: 'Видеонаблюдение',
+        subcategory: 'Мониторы',
+        price: 15990,
+        image: monitor,
         rating: 4.9,
         reviews: 245,
         isNew: true,
         inStock: true,
-        colors: ['Белый', 'Черный'],
-        sizes: ['One size']
+        brand: 'Dahua',
+        type: 'LED',
+        features: ['24 дюйма', 'Full HD', 'VESA крепление'],
+        warranty: 3
     },
     {
         id: 9,
-        name: 'Кожаный ремень',
-        category: 'Аксессуары',
-        subcategory: 'Ремни',
-        price: 2490,
-        image: remen,
+        name: 'Блок питания 12В',
+        category: 'Комплектующие',
+        subcategory: 'Блоки питания',
+        price: 1990,
+        image: powerSupply,
         rating: 4.4,
         reviews: 43,
         inStock: true,
-        colors: ['Черный', 'Коричневый'],
-        sizes: ['S', 'M', 'L', 'XL']
+        brand: 'GSN',
+        type: 'Импульсный',
+        features: ['12В 5А', 'Защита от КЗ', 'Индикация'],
+        warranty: 3
     },
     {
         id: 10,
-        name: 'Пальто Oversize',
-        category: 'Одежда',
-        subcategory: 'Верхняя одежда',
-        price: 15990,
-        oldPrice: 19990,
-        image: palto,
+        name: 'Умный замок Samsung',
+        category: 'Контроль доступа',
+        subcategory: 'Умные замки',
+        price: 25990,
+        oldPrice: 32990,
+        image: smartLock,
         rating: 4.8,
         reviews: 112,
         discount: 20,
         inStock: true,
-        colors: ['Черный', 'Бежевый', 'Серый'],
-        sizes: ['S', 'M', 'L']
+        brand: 'Samsung',
+        type: 'Электронный',
+        features: ['Bluetooth', 'Пин-код', 'RFID'],
+        warranty: 3
     },
     {
         id: 11,
-        name: 'Рюкзак',
-        category: 'Аксессуары',
-        subcategory: 'Сумки',
-        price: 6990,
-        image: bag,
+        name: 'Кабель КВК-П 2х0.75',
+        category: 'Комплектующие',
+        subcategory: 'Кабели',
+        price: 350,
+        image: cable,
         rating: 4.6,
         reviews: 89,
         inStock: true,
-        colors: ['Черный', 'Оливковый'],
-        sizes: ['One size']
+        brand: 'Спецкабель',
+        type: 'Комбинированный',
+        features: ['2 жилы', 'Коаксиал', '100м бухта'],
+        warranty: 3
     },
     {
         id: 12,
-        name: 'Платье-миди',
-        category: 'Одежда',
-        subcategory: 'Платья',
-        price: 8990,
-        image: plate,
+        name: 'Переговорное устройство',
+        category: 'Домофоны',
+        subcategory: 'Аудиодомофоны',
+        price: 3490,
+        image: intercom,
         rating: 4.7,
         reviews: 134,
         isNew: true,
         inStock: true,
-        colors: ['Черный', 'Красный', 'Синий'],
-        sizes: ['XS', 'S', 'M', 'L']
+        brand: 'VIZIT',
+        type: 'Проводное',
+        features: ['Громкая связь', 'Регулировка звука', 'Простота установки'],
+        warranty: 3
     }
 ];
 
 const categories = [
     { id: 'all', name: 'Все товары' },
-    { id: 'Одежда', name: 'Одежда' },
-    { id: 'Обувь', name: 'Обувь' },
-    { id: 'Аксессуары', name: 'Аксессуары' },
-    { id: 'Электроника', name: 'Электроника ' }
+    { id: 'Домофоны', name: 'Домофоны' },
+    { id: 'Камеры', name: 'Камеры' },
+    { id: 'Видеонаблюдение', name: 'Видеонаблюдение' },
+    { id: 'Сигнализации', name: 'Сигнализации' },
+    { id: 'Контроль доступа', name: 'Контроль доступа' },
+    { id: 'Пожарная безопасность', name: 'Пожарная безопасность' },
+    { id: 'Датчики', name: 'Датчики' },
+    { id: 'Комплектующие', name: 'Комплектующие' }
 ];
 
 const sortOptions = [
@@ -201,7 +229,8 @@ const sortOptions = [
     { id: 'newest', name: 'Новинки' },
     { id: 'price_asc', name: 'Цена: по возрастанию' },
     { id: 'price_desc', name: 'Цена: по убыванию' },
-    { id: 'rating', name: 'По рейтингу' }
+    { id: 'rating', name: 'По рейтингу' },
+    { id: 'warranty', name: 'По гарантии' }
 ];
 
 const Catalog = () => {
@@ -212,16 +241,16 @@ const Catalog = () => {
 
     // Состояния фильтров
     const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || 'all');
-    const [priceRange, setPriceRange] = useState([0, 30000]);
-    const [selectedColors, setSelectedColors] = useState([]);
-    const [selectedSizes, setSelectedSizes] = useState([]);
+    const [priceRange, setPriceRange] = useState([0, 100000]);
+    const [selectedBrands, setSelectedBrands] = useState([]);
+    const [selectedTypes, setSelectedTypes] = useState([]);
     const [inStockOnly, setInStockOnly] = useState(false);
     const [sortBy, setSortBy] = useState(searchParams.get('sort') || 'popular');
     const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
 
-    // Уникальные цвета и размеры для фильтров
-    const allColors = [...new Set(allProducts.flatMap(p => p.colors || []))];
-    const allSizes = [...new Set(allProducts.flatMap(p => p.sizes || []))];
+    // Уникальные бренды и типы для фильтров
+    const allBrands = [...new Set(allProducts.flatMap(p => p.brand ? [p.brand] : []))];
+    const allTypes = [...new Set(allProducts.flatMap(p => p.type ? [p.type] : []))];
 
     // Применение фильтров
     useEffect(() => {
@@ -231,7 +260,8 @@ const Catalog = () => {
         if (searchQuery) {
             result = result.filter(p =>
                 p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                p.category.toLowerCase().includes(searchQuery.toLowerCase())
+                p.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                (p.brand && p.brand.toLowerCase().includes(searchQuery.toLowerCase()))
             );
         }
 
@@ -243,17 +273,17 @@ const Catalog = () => {
         // Цена
         result = result.filter(p => p.price >= priceRange[0] && p.price <= priceRange[1]);
 
-        // Цвета
-        if (selectedColors.length > 0) {
+        // Бренды
+        if (selectedBrands.length > 0) {
             result = result.filter(p =>
-                p.colors && p.colors.some(c => selectedColors.includes(c))
+                p.brand && selectedBrands.includes(p.brand)
             );
         }
 
-        // Размеры
-        if (selectedSizes.length > 0) {
+        // Типы устройств
+        if (selectedTypes.length > 0) {
             result = result.filter(p =>
-                p.sizes && p.sizes.some(s => selectedSizes.includes(s))
+                p.type && selectedTypes.includes(p.type)
             );
         }
 
@@ -273,6 +303,8 @@ const Catalog = () => {
                     return (b.rating || 0) - (a.rating || 0);
                 case 'newest':
                     return (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0);
+                case 'warranty':
+                    return (b.warranty || 0) - (a.warranty || 0);
                 default:
                     return (b.rating || 0) - (a.rating || 0);
             }
@@ -286,25 +318,25 @@ const Catalog = () => {
         if (sortBy !== 'popular') params.sort = sortBy;
         if (searchQuery) params.search = searchQuery;
         setSearchParams(params);
-    }, [selectedCategory, priceRange, selectedColors, selectedSizes, inStockOnly, sortBy, searchQuery, products]);
+    }, [selectedCategory, priceRange, selectedBrands, selectedTypes, inStockOnly, sortBy, searchQuery, products]);
 
-    const handleColorToggle = (color) => {
-        setSelectedColors(prev =>
-            prev.includes(color) ? prev.filter(c => c !== color) : [...prev, color]
+    const handleBrandToggle = (brand) => {
+        setSelectedBrands(prev =>
+            prev.includes(brand) ? prev.filter(b => b !== brand) : [...prev, brand]
         );
     };
 
-    const handleSizeToggle = (size) => {
-        setSelectedSizes(prev =>
-            prev.includes(size) ? prev.filter(s => s !== size) : [...prev, size]
+    const handleTypeToggle = (type) => {
+        setSelectedTypes(prev =>
+            prev.includes(type) ? prev.filter(t => t !== type) : [...prev, type]
         );
     };
 
     const clearFilters = () => {
         setSelectedCategory('all');
-        setPriceRange([0, 30000]);
-        setSelectedColors([]);
-        setSelectedSizes([]);
+        setPriceRange([0, 100000]);
+        setSelectedBrands([]);
+        setSelectedTypes([]);
         setInStockOnly(false);
         setSearchQuery('');
         setSortBy('popular');
@@ -319,7 +351,7 @@ const Catalog = () => {
                 </div>
                 <div className="container">
                     <div className={styles.hero_content}>
-                        <h1 className={styles.hero_title}>Каталог оборудования</h1>
+                        <h1 className={styles.hero_title}>Каталог систем безопасности</h1>
                         <p className={styles.hero_description}>
                             Профессиональное оборудование для систем безопасности. Только проверенные бренды с гарантией 3 года
                         </p>
@@ -338,7 +370,7 @@ const Catalog = () => {
                             </svg>
                             <input
                                 type="text"
-                                placeholder="Поиск товаров..."
+                                placeholder="Поиск по названию, категории или бренду..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 className={styles.search_input}
@@ -373,9 +405,9 @@ const Catalog = () => {
                             <polygon points="22 3 2 3 10 13 10 21 14 18 14 13 22 3"/>
                         </svg>
                         Фильтры
-                        {(selectedColors.length > 0 || selectedSizes.length > 0 || inStockOnly || selectedCategory !== 'all') && (
+                        {(selectedBrands.length > 0 || selectedTypes.length > 0 || inStockOnly || selectedCategory !== 'all') && (
                             <span className={styles.filter_badge}>
-                {selectedColors.length + selectedSizes.length + (inStockOnly ? 1 : 0) + (selectedCategory !== 'all' ? 1 : 0)}
+                {selectedBrands.length + selectedTypes.length + (inStockOnly ? 1 : 0) + (selectedCategory !== 'all' ? 1 : 0)}
               </span>
                         )}
                     </button>
@@ -393,7 +425,7 @@ const Catalog = () => {
 
                         {/* Категории */}
                         <div className={styles.filter_section}>
-                            <h4 className={styles.filter_section_title}>Категории</h4>
+                            <h4 className={styles.filter_section_title}>Категории оборудования</h4>
                             <div className={styles.category_list}>
                                 {categories.map(cat => (
                                     <button
@@ -401,7 +433,6 @@ const Catalog = () => {
                                         className={`${styles.category_btn} ${selectedCategory === cat.id ? styles.active : ''}`}
                                         onClick={() => setSelectedCategory(cat.id)}
                                     >
-                                        <span className={styles.category_icon}>{cat.icon}</span>
                                         <span>{cat.name}</span>
                                     </button>
                                 ))}
@@ -410,7 +441,7 @@ const Catalog = () => {
 
                         {/* Цена */}
                         <div className={styles.filter_section}>
-                            <h4 className={styles.filter_section_title}>Цена</h4>
+                            <h4 className={styles.filter_section_title}>Цена, ₽</h4>
                             <div className={styles.price_range}>
                                 <div className={styles.price_inputs}>
                                     <input
@@ -418,7 +449,7 @@ const Catalog = () => {
                                         value={priceRange[0]}
                                         onChange={(e) => setPriceRange([Number(e.target.value), priceRange[1]])}
                                         className={styles.price_input}
-                                        placeholder="от"
+                                        placeholder="от 0"
                                     />
                                     <span>—</span>
                                     <input
@@ -426,13 +457,14 @@ const Catalog = () => {
                                         value={priceRange[1]}
                                         onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
                                         className={styles.price_input}
-                                        placeholder="до"
+                                        placeholder="до 100000"
                                     />
                                 </div>
                                 <input
                                     type="range"
                                     min="0"
-                                    max="30000"
+                                    max="100000"
+                                    step="1000"
                                     value={priceRange[1]}
                                     onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
                                     className={styles.price_slider}
@@ -440,38 +472,38 @@ const Catalog = () => {
                             </div>
                         </div>
 
-                        {/* Цвета */}
+                        {/* Бренды */}
                         <div className={styles.filter_section}>
-                            <h4 className={styles.filter_section_title}>Цвет</h4>
-                            <div className={styles.color_list}>
-                                {allColors.map(color => (
-                                    <button
-                                        key={color}
-                                        className={`${styles.color_filter} ${selectedColors.includes(color) ? styles.active : ''}`}
-                                        onClick={() => handleColorToggle(color)}
-                                    >
-                    <span
-                        className={styles.color_dot}
-                        style={{ backgroundColor: getColorValue(color) }}
-                    ></span>
-                                        <span>{color}</span>
-                                    </button>
+                            <h4 className={styles.filter_section_title}>Производитель</h4>
+                            <div className={styles.checkbox_group}>
+                                {allBrands.map(brand => (
+                                    <label key={brand} className={styles.checkbox_label}>
+                                        <input
+                                            type="checkbox"
+                                            checked={selectedBrands.includes(brand)}
+                                            onChange={() => handleBrandToggle(brand)}
+                                            className={styles.checkbox}
+                                        />
+                                        <span>{brand}</span>
+                                    </label>
                                 ))}
                             </div>
                         </div>
 
-                        {/* Размеры */}
+                        {/* Тип устройства */}
                         <div className={styles.filter_section}>
-                            <h4 className={styles.filter_section_title}>Размер</h4>
-                            <div className={styles.size_list}>
-                                {allSizes.map(size => (
-                                    <button
-                                        key={size}
-                                        className={`${styles.size_filter} ${selectedSizes.includes(size) ? styles.active : ''}`}
-                                        onClick={() => handleSizeToggle(size)}
-                                    >
-                                        {size}
-                                    </button>
+                            <h4 className={styles.filter_section_title}>Тип устройства</h4>
+                            <div className={styles.checkbox_group}>
+                                {allTypes.map(type => (
+                                    <label key={type} className={styles.checkbox_label}>
+                                        <input
+                                            type="checkbox"
+                                            checked={selectedTypes.includes(type)}
+                                            onChange={() => handleTypeToggle(type)}
+                                            className={styles.checkbox}
+                                        />
+                                        <span>{type}</span>
+                                    </label>
                                 ))}
                             </div>
                         </div>
@@ -502,8 +534,8 @@ const Catalog = () => {
                                     <circle cx="11" cy="11" r="8"/>
                                     <path d="M21 21l-4.35-4.35"/>
                                 </svg>
-                                <h3>Товары не найдены</h3>
-                                <p>Попробуйте изменить параметры фильтрации</p>
+                                <h3>Оборудование не найдено</h3>
+                                <p>Попробуйте изменить параметры фильтрации или поиска</p>
                                 <button onClick={clearFilters} className={styles.reset_btn}>
                                     Сбросить фильтры
                                 </button>
@@ -521,22 +553,5 @@ const Catalog = () => {
         </div>
     );
 };
-
-// Вспомогательная функция для получения цвета
-function getColorValue(color) {
-    const colorMap = {
-        'Черный': '#000000',
-        'Белый': '#FFFFFF',
-        'Серый': '#808080',
-        'Красный': '#E31B23',
-        'Синий': '#3B82F6',
-        'Коричневый': '#8B4513',
-        'Бежевый': '#F5F5DC',
-        'Золотой': '#FFD700',
-        'Серебристый': '#C0C0C0',
-        'Оливковый': '#808000'
-    };
-    return colorMap[color] || '#CCCCCC';
-}
 
 export default Catalog;
