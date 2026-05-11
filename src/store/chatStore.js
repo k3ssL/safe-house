@@ -5,7 +5,7 @@ const useChatStore = create((set, get) => ({
         {
             id: '1',
             userId: 'support',
-            userName: 'Поддержка ВЕБЭКС',
+            userName: 'Поддержка БАСТИОН',
             text: 'Добро пожаловать в чат поддержки! Чем можем помочь?',
             timestamp: new Date(Date.now() - 3600000).toISOString(),
             isSupport: true
@@ -32,7 +32,7 @@ const useChatStore = create((set, get) => ({
             const supportResponse = {
                 id: (Date.now() + 1).toString(),
                 userId: 'support',
-                userName: 'Поддержка ВЕБЭКС',
+                userName: 'Поддержка БАСТИОН',
                 text: getAutoResponse(text),
                 timestamp: new Date().toISOString(),
                 isSupport: true

@@ -88,8 +88,8 @@ const Footer = () => {
                     <polyline points="22,6 12,13 2,6"/>
                 </svg>
             ),
-            value: 'hello@webex-store.ru',
-            link: 'mailto:hello@webex-store.ru'
+            value: 'hello@bastion-store.ru',
+            link: 'mailto:hello@bastion-store.ru'
         },
         {
             icon: (
@@ -98,8 +98,8 @@ const Footer = () => {
                     <circle cx="12" cy="10" r="3"/>
                 </svg>
             ),
-            value: 'г. Москва, ул. Тверская, 15',
-            link: 'https://maps.google.com'
+            value: 'г. Стерлитамак, ул. Бабушкина, д. 100,',
+            link: 'https://www.google.com/maps/place/%D1%83%D0%BB.+%D0%91%D0%B0%D0%B1%D1%83%D1%88%D0%BA%D0%B8%D0%BD%D0%B0,+100,+%D0%A1%D1%82%D0%B5%D1%80%D0%BB%D0%B8%D1%82%D0%B0%D0%BC%D0%B0%D0%BA,+%D0%A0%D0%B5%D1%81%D0%BF.+%D0%91%D0%B0%D1%88%D0%BA%D0%BE%D1%80%D1%82%D0%BE%D1%81%D1%82%D0%B0%D0%BD,+453105/@53.6823631,55.998157,849m/data=!3m1!1e3!4m6!3m5!1s0x43d8114328d87061:0x7c9cd3522cc1126b!8m2!3d53.6716272!4d55.9959227!16s%2Fg%2F11c5pv7jr5?entry=ttu&g_ep=EgoyMDI2MDUwNi4wIKXMDSoASAFQAw%3D%3D'
         }
     ];
 
@@ -114,7 +114,7 @@ const Footer = () => {
                     {/* Логотип и описание */}
                     <div className={styles.footer_section}>
                         <Link to="/" className={styles.footer_logo}>
-                            <span className={styles.logo_text}>ВЕБЭКС</span>
+                            <span className={styles.logo_text}>БАСТИОН</span>
                             <span className={styles.logo_dot}>.</span>
                         </Link>
                         <p className={styles.footer_description}>
@@ -194,7 +194,7 @@ const Footer = () => {
                 {/* Нижняя часть футера */}
                 <div className={styles.footer_bottom}>
                     <div className={styles.copyright}>
-                        <p>© {currentYear} ВЕБЭКС. Все права защищены.</p>
+                        <p>© {currentYear} БАСТИОН. Все права защищены.</p>
                     </div>
                 </div>
             </div>

@@ -54,7 +54,7 @@ const Chat = () => {
             <div className={styles.chat_header}>
                 <div className={styles.header_info}>
                     <div className={styles.status_dot}></div>
-                    <span>Поддержка ВЕБЭКС</span>
+                    <span>Поддержка БАСТИОН</span>
                 </div>
                 <button onClick={toggleChat} className={styles.close_btn}>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

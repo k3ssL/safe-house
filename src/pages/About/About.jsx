@@ -124,7 +124,7 @@ const About = () => {
                 </div>
                 <div className="container">
                     <div className={styles.hero_content}>
-                        <span className={styles.hero_badge}>История ВЕБЭКС</span>
+                        <span className={styles.hero_badge}>История БАСТИОН</span>
                         <h1 className={styles.hero_title}>
                             Ваша безопасность —
                             <span className={styles.hero_accent}>наша профессия</span>
