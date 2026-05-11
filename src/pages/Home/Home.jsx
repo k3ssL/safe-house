@@ -2,66 +2,58 @@ import Hero from '../../components/Hero/Hero';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import styles from './Home.module.css';
 import {Link} from "react-router-dom";
-import whiteShirt from '../../assets/images/white_shirt.jpeg'
-import sumka from '../../assets/images/sumka.webp'
-import watch from '../../assets/images/watch.webp'
-import asics from '../../assets/images/asics.webp'
-import switer from '../../assets/images/switer.webp'
+import sensor from '../../assets/images/sensor.webp';
+import domofon from '../../assets/images/domofon.png';
+import fireSystem from '../../assets/images/fireSystem.jpg';
+import smartLock from '../../assets/images/smartLock.jpg';
 import glasses from '../../assets/images/glasses.jpg'
 import collection from '../../assets/images/collection.jpg'
+import videorecorder from "../../assets/images/videodecoder.webp";
 
 const products = [
     {
         id: 1,
-        name: 'Минималистичная футболка',
-        category: 'Одежда',
-        price: 2990,
+        name: 'Датчик движения Bosch',
+        category: 'Датчики',
+        price: 2490,
         oldPrice: 4990,
-        image: whiteShirt,
+        image: sensor,
         isNew: true
     },
     {
         id: 2,
-        name: 'Кожаная сумка',
-        category: 'Аксессуары',
-        price: 12990,
-        image: sumka,
+        name: 'IP-видеодомофон Hikvision',
+        category: 'Домофоны',
+        price: 15990,
+        image: domofon,
         isNew: true
     },
     {
         id: 3,
-        name: 'Смарт-часы',
-        category: 'Электроника',
-        price: 24990,
-        oldPrice: 29990,
-        image: watch,
+        name: 'Пожарная сигнализация Болид',
+        category: 'Пожарная безопасность',
+        price: 59990,
+        oldPrice: 89990,
+        image: fireSystem,
         discount: 17
     },
     {
         id: 4,
-        name: 'Дизайнерские кроссовки',
-        category: 'Обувь',
-        price: 8990,
-        image: asics,
+        name: 'Умный замок Samsung',
+        category: 'Контроль доступа',
+        price: 25990,
+        image: smartLock,
         isNew: true
     },
     {
         id: 5,
-        name: 'Шерстяной свитер',
-        category: 'Одежда',
-        price: 5990,
-        oldPrice: 8990,
-        image: switer,
+        name: 'Видеорегистратор 16 каналов',
+        category: 'Видеонаблюдение',
+        price: 42990,
+        oldPrice: 89900,
+        image: videorecorder,
         discount: 33
     },
-    {
-        id: 6,
-        name: 'Солнцезащитные очки',
-        category: 'Аксессуары',
-        price: 3990,
-        image: glasses,
-        isNew: true
-    }
 ];
 
 const Home = () => {
