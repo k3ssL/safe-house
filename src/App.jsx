@@ -1,8 +1,6 @@
 import {
-    BrowserRouter as Router,
     Routes,
     Route,
-    BrowserRouter,
     useLocation,
     Navigate,
     HashRouter
@@ -22,7 +20,7 @@ import Footer from "./components/Footer/Footer";
 import UnderConstruction from "./pages/UnderConstruction/UnderConstruction";
 import {useEffect} from "react";
 
-const Layout = () => {
+const AppRouter = () => {
     const location = useLocation()
 
     useEffect(() => {
@@ -33,7 +31,6 @@ const Layout = () => {
         const redirectPath = localStorage.getItem('redirectPath');
         if (redirectPath) {
             localStorage.removeItem('redirectPath');
-            // Используем setTimeout, чтобы избежать конфликтов с Router
             setTimeout(() => {
                 window.location.replace(`/${redirectPath}`);
             }, 100);
@@ -41,7 +38,7 @@ const Layout = () => {
     }, []);
     return (
         <>
-            <Header />
+
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/product/:id" element={<Product />} />
@@ -65,17 +62,19 @@ const Layout = () => {
                 <Route path="/terms" element={<UnderConstruction />} />
                 <Route path="*" element={<Navigate to={"/"} />} />
             </Routes>
-            <Footer />
-            <Chat />
+
             </>
     )
 }
 
 function App() {
     return (
-        <HashRouter>
-            <Layout/>
-        </HashRouter>
+        <>
+            <Header />
+            <AppRouter/>
+            <Footer />
+            <Chat />
+        </>
     )
 }
 
