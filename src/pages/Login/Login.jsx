@@ -43,7 +43,7 @@ const Login = () => {
                 <div className={styles.login_container}>
                     <div className={styles.login_card}>
                         <div className={styles.logo}>
-                            <span>БАСТИОН</span>
+                            <span>БЕЗОПАСНЫЙ ДОМ</span>
                             <span className={styles.dot}>.</span>
                         </div>
 

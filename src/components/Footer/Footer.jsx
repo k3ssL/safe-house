@@ -114,7 +114,7 @@ const Footer = () => {
                     {/* Логотип и описание */}
                     <div className={styles.footer_section}>
                         <Link to="/" className={styles.footer_logo}>
-                            <span className={styles.logo_text}>БАСТИОН</span>
+                            <span className={styles.logo_text}>БЕЗОПАСНЫЙ ДОМ</span>
                             <span className={styles.logo_dot}>.</span>
                         </Link>
                         <p className={styles.footer_description}>
@@ -194,7 +194,7 @@ const Footer = () => {
                 {/* Нижняя часть футера */}
                 <div className={styles.footer_bottom}>
                     <div className={styles.copyright}>
-                        <p>© {currentYear} БАСТИОН. Все права защищены.</p>
+                        <p>© {currentYear} БЕЗОПАСНЫЙ ДОМ. Все права защищены.</p>
                     </div>
                 </div>
             </div>

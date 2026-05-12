@@ -46,7 +46,7 @@ const Header = () => {
                 <div className="container">
                     <div className={styles.header_content}>
                         <Link to="/" className={styles.logo} onClick={handleLinkClick}>
-                            <span className={styles.logo_text}>БАСТИОН</span>
+                            <span className={styles.logo_text}>БЕЗОПАСНЫЙ ДОМ</span>
                             <span className={styles.logo_dot}>.</span>
                         </Link>
 
@@ -122,7 +122,7 @@ const Header = () => {
                 <div className={styles.mobile_menu} onClick={(e) => e.stopPropagation()}>
                     <div className={styles.mobile_menu_header}>
                         <div className={styles.mobile_menu_logo}>
-                            <span>БАСТИОН</span>
+                            <span>БЕЗОПАСНЫЙ ДОМ</span>
                             <span className={styles.mobile_menu_dot}>.</span>
                         </div>
                         <button className={styles.mobile_menu_close} onClick={closeMobileMenu}>
