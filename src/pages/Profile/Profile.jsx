@@ -136,7 +136,6 @@ const Profile = () => {
                                         <span>{order.items} товара</span>
                                         <span className={styles.order_total}>{order.total} ₽</span>
                                     </div>
-                                    <button className={styles.order_btn}>Подробнее</button>
                                 </div>
                             ))}
                         </div>
