@@ -47,7 +47,7 @@ const Header = () => {
                     <div className={styles.header_content}>
                         <Link to="/" className={styles.logo} onClick={handleLinkClick}>
                             <span className={styles.logo_text}>БЕЗОПАСНЫЙ ДОМ</span>
-                            {/*<span className={styles.logo_dot}>.</span>*/}
+                            <span className={styles.logo_dot}>.</span>
                         </Link>
 
                         {/* Десктоп навигация */}

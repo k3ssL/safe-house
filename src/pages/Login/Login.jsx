@@ -44,7 +44,7 @@ const Login = () => {
                     <div className={styles.login_card}>
                         <div className={styles.logo}>
                             <span>БЕЗОПАСНЫЙ ДОМ</span>
-                            {/*<span className={styles.dot}>.</span>*/}
+                            <span className={styles.dot}>.</span>
                         </div>
 
                         <h1 className={styles.title}>Добро пожаловать</h1>
