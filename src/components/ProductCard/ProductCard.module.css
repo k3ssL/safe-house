@@ -124,3 +124,167 @@
         padding: var(--spacing-2) var(--spacing-3);
     }
 }
+
+/* Анимация добавления в корзину */
+.added_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(78, 205, 196, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeInScale 0.3s ease;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.added_icon {
+    width: 40%;
+    height: 40%;
+    fill: white;
+    animation: checkmark 0.4s ease 0.1s both;
+}
+
+@keyframes checkmark {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Toast уведомление */
+.notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    min-width: 350px;
+    overflow: hidden;
+    z-index: 1000;
+    animation: slideInRight 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.notification_content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+}
+
+.notification_icon {
+    width: 24px;
+    height: 24px;
+    color: #1a56db;
+    flex-shrink: 0;
+}
+
+.notification_icon svg {
+    width: 100%;
+    height: 100%;
+    animation: iconPop 0.5s ease 0.2s both;
+}
+
+@keyframes iconPop {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.notification_text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.notification_title {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.notification_product {
+    color: #666;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+.notification_link {
+    padding: 6px 12px;
+    background: #1a56db;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.notification_link:hover {
+    background: #1a56db;
+    transform: translateY(-1px);
+}
+
+.notification_progress {
+    height: 3px;
+    background: #1a56db;
+    animation: progress 2s linear;
+}
+
+@keyframes progress {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .notification {
+        left: 20px;
+        right: 20px;
+        min-width: auto;
+        bottom: 20px;
+    }
+
+    .notification_product {
+        max-width: 100px;
+    }
+}
