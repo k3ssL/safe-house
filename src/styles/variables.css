@@ -1,20 +1,20 @@
 :root {
     /* Основные цвета */
     --color-primary: #0a0a0a;
-    --color-secondary: #1a56db;        /* Технологичный синий */
-    --color-secondary-dark: #0e3a8a;    /* Темно-синий для hover */
-    --color-secondary-light: #3b82f6;   /* Светло-синий для акцентов */
+    --color-secondary: #1a56db;
+    --color-secondary-dark: #0e3a8a;
+    --color-secondary-light: #3b82f6;
 
-    --color-accent: #10b981;            /* Изумрудный - цвет безопасности */
+    --color-accent: #10b981;
     --color-accent-dark: #059669;
     --color-accent-light: #34d399;
 
     /* Фоновые цвета */
     --color-bg-primary: #ffffff;
-    --color-bg-secondary: #f8fafc;      /* Светло-сизый для современного вида */
-    --color-bg-dark: #0f172a;           /* Темно-синий для футера/хедера */
+    --color-bg-secondary: #f8fafc;
+    --color-bg-dark: #0f172a;
     --color-bg-card: #ffffff;
-    --color-bg-elevated: #f1f5f9;       /* Для карточек и панелей */
+    --color-bg-elevated: #f1f5f9;
 
     /* Текст */
     --color-text-primary: #0f172a;      /* Темно-синий для основного текста */
@@ -34,10 +34,10 @@
     --color-info: #3b82f6;
 
     /* Специфичные для безопасности */
-    --color-danger: #dc2626;            /* Для критических уведомлений */
-    --color-protected: #10b981;         /* Для статуса "под защитой" */
-    --color-offline: #6b7280;           /* Для офлайн устройств */
-    --color-online: #10b981;            /* Для онлайн устройств */
+    --color-danger: #dc2626;
+    --color-protected: #10b981;
+    --color-offline: #6b7280;
+    --color-online: #10b981;
 
     /* Тени */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
