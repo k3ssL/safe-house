@@ -81,12 +81,6 @@ const Login = () => {
                                 Войти
                             </button>
                         </form>
-
-                        <div className={styles.demo_note}>
-                            <p>Демо-доступ:</p>
-                            <code>Любой email / любой пароль</code>
-                        </div>
-
                         <p className={styles.register_link}>
                             Нет аккаунта? <Link to="/register">Зарегистрироваться</Link>
                         </p>
