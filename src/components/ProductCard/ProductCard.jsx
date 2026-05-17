@@ -1,14 +1,20 @@
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import useCartStore from '../../store/cartStore';
 import styles from './ProductCard.module.css';
+import useAuthStore from "../../store/authStore";
 
 const ProductCard = ({ product }) => {
     const addItem = useCartStore((state) => state.addItem);
 
+    const navigate = useNavigate()
+
     const handleAddToCart = (e) => {
+        if (!isAuthenticated) navigate('/login')
         e.preventDefault();
         addItem(product);
     };
+
+    const { isAuthenticated } = useAuthStore();
 
     return (
         <Link to={`/product/${product.id}`} className={styles.card}>
