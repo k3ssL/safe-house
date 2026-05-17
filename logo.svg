@@ -1,25 +1,29 @@
 <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- Фоновый градиент -->
     <defs>
+        <!-- Фоновый градиент -->
         <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#1a1a1a"/>
-            <stop offset="100%" stop-color="#0a0a0a"/>
+            <stop offset="0%" stop-color="#1A1A1A"/>
+            <stop offset="100%" stop-color="#0A0A0A"/>
         </linearGradient>
 
+        <!-- Синий градиент -->
         <linearGradient id="letterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#E31B23"/>
-            <stop offset="100%" stop-color="#FF4D55"/>
+            <stop offset="0%" stop-color="#2563EB"/>
+            <stop offset="100%" stop-color="#60A5FA"/>
         </linearGradient>
 
+        <!-- Блик -->
         <linearGradient id="glowGradient" x1="50%" y1="0%" x2="50%" y2="100%">
-            <stop offset="0%" stop-color="#E31B23" stop-opacity="0.3"/>
-            <stop offset="100%" stop-color="#E31B23" stop-opacity="0"/>
+            <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
         </linearGradient>
 
+        <!-- Тень -->
         <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-            <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#E31B23" flood-opacity="0.3"/>
+            <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#2563EB" flood-opacity="0.35"/>
         </filter>
 
+        <!-- Glow -->
         <filter id="glow">
             <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
             <feMerge>
@@ -32,34 +36,92 @@
     <!-- Фон -->
     <rect width="100" height="100" rx="24" fill="url(#bgGradient)"/>
 
-    <!-- Декоративные линии -->
-    <circle cx="50" cy="50" r="42" stroke="url(#letterGradient)" stroke-width="1.5" stroke-opacity="0.2" fill="none"/>
-    <circle cx="50" cy="50" r="35" stroke="url(#letterGradient)" stroke-width="1" stroke-opacity="0.15" fill="none"/>
-    <circle cx="50" cy="50" r="28" stroke="url(#letterGradient)" stroke-width="0.5" stroke-opacity="0.1" fill="none"/>
+    <!-- Декоративные круги -->
+    <circle cx="50" cy="50" r="42"
+            stroke="url(#letterGradient)"
+            stroke-width="1.5"
+            stroke-opacity="0.2"
+            fill="none"/>
 
-    <!-- Буква В с эффектом -->
+    <circle cx="50" cy="50" r="35"
+            stroke="url(#letterGradient)"
+            stroke-width="1"
+            stroke-opacity="0.15"
+            fill="none"/>
+
+    <circle cx="50" cy="50" r="28"
+            stroke="url(#letterGradient)"
+            stroke-width="0.5"
+            stroke-opacity="0.1"
+            fill="none"/>
+
+    <!-- Буква Б -->
     <g filter="url(#shadow)">
-        <path d="M32 28 L32 72 L48 72 C58 72 64 66 64 58 C64 52 60 48 55 46 C59 44 62 40 62 35 C62 28 56 28 48 28 L32 28 Z M40 46 L40 36 L48 36 C52 36 54 38 54 41 C54 44 52 46 48 46 L40 46 Z M40 54 L48 54 C53 54 56 56 56 59 C56 62 53 64 48 64 L40 64 L40 54 Z"
-              fill="url(#letterGradient)"
-              stroke="#ffffff"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"/>
+        <path
+                d="
+                M34 28
+                H66
+                V36
+                H42
+                V46
+                H52
+                C61 46 66 51 66 59
+                C66 67 60 72 50 72
+                H34
+                V28
+
+                M42 54
+                V64
+                H50
+                C55 64 58 62 58 59
+                C58 56 55 54 50 54
+                H42
+            "
+                fill="url(#letterGradient)"
+                stroke="#FFFFFF"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+        />
     </g>
 
-    <!-- Акцентный блик -->
-    <path d="M32 28 L40 28 L40 36 L48 36 C52 36 54 38 54 41 L62 35 C60 32 56 28 48 28 L32 28 Z"
-          fill="url(#glowGradient)"
-          opacity="0.4"/>
+    <!-- Верхний блик -->
+    <path
+            d="
+            M34 28
+            H66
+            V36
+            H42
+            V46
+            H52
+            C58 46 62 48 64 52
+            L66 40
+            C63 31 56 28 48 28
+            H34
+        "
+            fill="url(#glowGradient)"
+            opacity="0.45"
+    />
 
     <!-- Декоративные точки -->
-    <circle cx="68" cy="28" r="2" fill="#E31B23" opacity="0.6">
-        <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+    <circle cx="68" cy="28" r="2" fill="#3B82F6" opacity="0.7">
+        <animate attributeName="opacity"
+                 values="0.6;1;0.6"
+                 dur="2s"
+                 repeatCount="indefinite"/>
     </circle>
-    <circle cx="72" cy="32" r="1.5" fill="#FF4D55" opacity="0.5">
-        <animate attributeName="opacity" values="0.5;0.9;0.5" dur="2.5s" repeatCount="indefinite"/>
+
+    <circle cx="72" cy="32" r="1.5" fill="#60A5FA" opacity="0.5">
+        <animate attributeName="opacity"
+                 values="0.5;0.9;0.5"
+                 dur="2.5s"
+                 repeatCount="indefinite"/>
     </circle>
-    <circle cx="24" cy="68" r="2" fill="#E31B23" opacity="0.6">
-        <animate attributeName="opacity" values="0.6;1;0.6" dur="2.2s" repeatCount="indefinite"/>
+
+    <circle cx="24" cy="68" r="2" fill="#2563EB" opacity="0.6">
+        <animate attributeName="opacity"
+                 values="0.6;1;0.6"
+                 dur="2.2s"
+                 repeatCount="indefinite"/>
     </circle>
 </svg>
