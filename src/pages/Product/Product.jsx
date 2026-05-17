@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import useCartStore from '../../store/cartStore';
 import styles from './Product.module.css';
 import whiteShirt from '../../assets/images/white_shirt.jpeg'
@@ -38,6 +38,7 @@ import glasses from '../../assets/images/glasses.jpg'
 import plate from '../../assets/images/plate.jpg'
 import plate2 from '../../assets/images/plate2.webp'
 import plate3 from '../../assets/images/plate3.webp'
+import useAuthStore from "../../store/authStore";
 
 const productData = {
     1: {
@@ -295,13 +296,21 @@ const Product = () => {
         return <div className="container">Товар не найден</div>;
     }
 
+    const navigate = useNavigate()
+
     const handleAddToCart = () => {
+        if (!isAuthenticated) {
+            navigate('/login');
+            return;
+        }
         addItem({
             ...product,
             size: selectedSize,
             color: selectedColor
         });
     };
+
+    const { isAuthenticated } = useAuthStore();
 
     return (
         <div className="container">
