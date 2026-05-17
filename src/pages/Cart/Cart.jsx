@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useCartStore from '../../store/cartStore';
 import useAuthStore from '../../store/authStore';
@@ -6,10 +7,54 @@ import styles from './Cart.module.css';
 const Cart = () => {
     const { items, removeItem, updateQuantity, getTotalPrice, clearCart } = useCartStore();
     const { isAuthenticated } = useAuthStore();
+    const [showOrderModal, setShowOrderModal] = useState(false);
+    const [isOrderPlaced, setIsOrderPlaced] = useState(false);
+    const [isAnimating, setIsAnimating] = useState(false);
 
     const totalPrice = getTotalPrice();
     const deliveryPrice = totalPrice > 5000 ? 0 : 500;
     const finalPrice = totalPrice + deliveryPrice;
+
+    const handleCheckout = () => {
+        setIsAnimating(true);
+        setShowOrderModal(true);
+
+        // Имитация отправки заказа
+        setTimeout(() => {
+            setIsAnimating(false);
+            setIsOrderPlaced(true);
+
+            // Создаем конфетти
+            createConfetti();
+
+            // Очищаем корзину после успешного заказа
+            setTimeout(() => {
+                clearCart();
+                setShowOrderModal(false);
+                setIsOrderPlaced(false);
+            }, 3000);
+        }, 1500);
+    };
+
+    const createConfetti = () => {
+        const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#dfe6e9', '#ff69b4', '#a8e6cf'];
+
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = styles.confetti;
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.animationDelay = Math.random() * 0.5 + 's';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.width = Math.random() * 8 + 4 + 'px';
+            confetti.style.height = Math.random() * 8 + 4 + 'px';
+
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 3000);
+        }
+    };
 
     if (items.length === 0) {
         return (
@@ -116,7 +161,11 @@ const Cart = () => {
                             <span className={styles.total_price}>{finalPrice} ₽</span>
                         </div>
 
-                        <button className={styles.checkout_btn} disabled={!isAuthenticated}>
+                        <button
+                            className={styles.checkout_btn}
+                            disabled={!isAuthenticated}
+                            onClick={handleCheckout}
+                        >
                             {isAuthenticated ? 'Оформить заказ' : 'Войдите, чтобы оформить заказ'}
                         </button>
 
@@ -128,6 +177,47 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Модальное окно заказа */}
+            {showOrderModal && (
+                <div className={styles.order_overlay}>
+                    <div className={`${styles.order_modal} ${isOrderPlaced ? styles.order_modal_success : ''}`}>
+                        {!isOrderPlaced ? (
+                            <>
+                                <div className={styles.order_loading}>
+                                    <div className={styles.spinner}>
+                                        <svg viewBox="0 0 50 50">
+                                            <circle cx="25" cy="25" r="20" fill="none" strokeWidth="4"></circle>
+                                        </svg>
+                                    </div>
+                                    <h3>Оформление заказа...</h3>
+                                    <p>Пожалуйста, подождите</p>
+                                </div>
+                                <div className={styles.order_progress}>
+                                    <div className={styles.progress_bar}>
+                                        <div className={styles.progress_fill}></div>
+                                    </div>
+                                </div>
+                            </>
+                        ) : (
+                            <div className={styles.order_success}>
+                                <div className={styles.success_icon}>
+                                    <svg viewBox="0 0 52 52">
+                                        <circle cx="26" cy="26" r="25" fill="none" strokeWidth="2"/>
+                                        <path fill="none" strokeWidth="4" d="M14 27l7 7 16-16"/>
+                                    </svg>
+                                </div>
+                                <h3>Заказ оформлен!</h3>
+                                <p>Спасибо за покупку! Мы свяжемся с вами в ближайшее время для подтверждения заказа.</p>
+                                <div className={styles.order_details}>
+                                    <span>Номер заказа: #{(Math.random() * 1000000).toFixed(0)}</span>
+                                    <span>Сумма: {finalPrice} ₽</span>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

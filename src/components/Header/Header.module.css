@@ -490,6 +490,11 @@
         width: 28px;
         height: 28px;
     }
+
+    .logo {
+        font-size: 1rem;
+        align-items: center;
+    }
 }
 
 @media (max-width: 480px) {

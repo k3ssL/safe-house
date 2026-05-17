@@ -92,7 +92,7 @@ const UnderConstruction = () => {
                     {/* Логотип */}
                     <div className={styles.logo}>
                         <span className={styles.logo_text}>БЕЗОПАСНЫЙ ДОМ</span>
-                        <span className={styles.logo_dot}>.</span>
+                        {/*<span className={styles.logo_dot}>.</span>*/}
                     </div>
 
                     {/* Основной контент */}

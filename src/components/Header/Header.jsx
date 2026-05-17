@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import useAuthStore from '../../store/authStore';
 import useCartStore from '../../store/cartStore';
@@ -40,6 +40,27 @@ const Header = () => {
         document.body.style.overflow = '';
     };
 
+    const useIsMobile = (breakpoint = 768) => {
+        const query = `(max-width: ${breakpoint}px)`
+        const media = window.matchMedia(query)
+
+        const [isMobile, setIsMobile] = useState(media.matches)
+
+        useEffect(() => {
+            const handler = (e) => {
+                setIsMobile(e.matches)
+            }
+
+            media.addEventListener("change", handler)
+            return () => media.removeEventListener("change", handler)
+        }, [breakpoint, media])
+
+        return isMobile
+    }
+
+    const isMobile = useIsMobile()
+
+
     return (
         <>
             <header className={styles.header}>
@@ -47,7 +68,7 @@ const Header = () => {
                     <div className={styles.header_content}>
                         <Link to="/" className={styles.logo} onClick={handleLinkClick}>
                             <span className={styles.logo_text}>БЕЗОПАСНЫЙ ДОМ</span>
-                            <span className={styles.logo_dot}>.</span>
+                            {/*<span className={styles.logo_dot}>.</span>*/}
                         </Link>
 
                         {/* Десктоп навигация */}
@@ -123,7 +144,7 @@ const Header = () => {
                     <div className={styles.mobile_menu_header}>
                         <div className={styles.mobile_menu_logo}>
                             <span>БЕЗОПАСНЫЙ ДОМ</span>
-                            <span className={styles.mobile_menu_dot}>.</span>
+                            {/*<span className={styles.mobile_menu_dot}>.</span>*/}
                         </div>
                         <button className={styles.mobile_menu_close} onClick={closeMobileMenu}>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

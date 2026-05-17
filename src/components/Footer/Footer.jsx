@@ -115,7 +115,7 @@ const Footer = () => {
                     <div className={styles.footer_section}>
                         <Link to="/" className={styles.footer_logo}>
                             <span className={styles.logo_text}>БЕЗОПАСНЫЙ ДОМ</span>
-                            <span className={styles.logo_dot}>.</span>
+                            {/*<span className={styles.logo_dot}>.</span>*/}
                         </Link>
                         <p className={styles.footer_description}>
                             Профессиональные системы безопасности для дома и бизнеса. Надёжное оборудование, умные технологии и круглосуточная защита того, что вам дорого.
