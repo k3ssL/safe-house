@@ -133,8 +133,8 @@ const About = () => {
                             <span className={styles.hero_accent}>наша профессия</span>
                         </h1>
                         <p className={styles.hero_description}>
-                            С 2010 года проектируем, устанавливаем и обслуживаем системы безопасности.
-                            Более 10 000 объектов под защитой, 98% довольных клиентов и штат из 45 сертифицированных специалистов.
+                            С 2012 года проектируем, устанавливаем и обслуживаем системы безопасности.
+                            За время работы компания себя зарекомендовала и работает с крупными фирмами города.
                         </p>
                     </div>
                 </div>
@@ -199,30 +199,30 @@ const About = () => {
                 </div>
             </section>
 
-            {/* История секция с таймлайном */}
-            <section className={styles.history}>
-                <div className="container">
-                    <div className={styles.history_header}>
-                        <span className={styles.section_tag}>Наш путь</span>
-                        <h2 className={styles.section_title}>
-                            История успеха,
-                            <span className={styles.title_accent}> написанная вместе</span>
-                        </h2>
-                    </div>
-                    <div className={styles.timeline}>
-                        {milestones.map((milestone, index) => (
-                            <div key={index} className={styles.timeline_item}>
-                                <div className={styles.timeline_year}>{milestone.year}</div>
-                                <div className={styles.timeline_content}>
-                                    <h3 className={styles.timeline_title}>{milestone.title}</h3>
-                                    <p className={styles.timeline_description}>{milestone.description}</p>
-                                </div>
-                                {index < milestones.length - 1 && <div className={styles.timeline_line}></div>}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            {/*/!* История секция с таймлайном *!/*/}
+            {/*<section className={styles.history}>*/}
+            {/*    <div className="container">*/}
+            {/*        <div className={styles.history_header}>*/}
+            {/*            <span className={styles.section_tag}>Наш путь</span>*/}
+            {/*            <h2 className={styles.section_title}>*/}
+            {/*                История успеха,*/}
+            {/*                <span className={styles.title_accent}> написанная вместе</span>*/}
+            {/*            </h2>*/}
+            {/*        </div>*/}
+            {/*        <div className={styles.timeline}>*/}
+            {/*            {milestones.map((milestone, index) => (*/}
+            {/*                <div key={index} className={styles.timeline_item}>*/}
+            {/*                    <div className={styles.timeline_year}>{milestone.year}</div>*/}
+            {/*                    <div className={styles.timeline_content}>*/}
+            {/*                        <h3 className={styles.timeline_title}>{milestone.title}</h3>*/}
+            {/*                        <p className={styles.timeline_description}>{milestone.description}</p>*/}
+            {/*                    </div>*/}
+            {/*                    {index < milestones.length - 1 && <div className={styles.timeline_line}></div>}*/}
+            {/*                </div>*/}
+            {/*            ))}*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</section>*/}
 
             {/* Команда секция */}
             {/*<section className={styles.team}>*/}
@@ -285,14 +285,8 @@ const About = () => {
                                 </div>
                                 <div className={styles.advantage_item}>
                                     <div>
-                                        <h4>Доставка по РФ</h4>
-                                        <p>Бесплатная доставка при заказе от 10 000 ₽. Экспресс-доставка за 2 часа по городу</p>
-                                    </div>
-                                </div>
-                                <div className={styles.advantage_item}>
-                                    <div>
                                         <h4>Монтаж за 1 день</h4>
-                                        <p>8 сертифицированных бригад. Установка от 4 камер с настройкой за 4-6 часов</p>
+                                        <p>Установка от 4 камер с настройкой за 4-6 часов</p>
                                     </div>
                                 </div>
                                 <div className={styles.advantage_item}>
